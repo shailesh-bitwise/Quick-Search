@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Quick Search</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+}
+#search-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 400px;
+}
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+img {
+  width: 200px;
+}
+footer {
+  text-align: center;
+  margin-top: 50px;
+}
+select {
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+
+<div id="logo">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Logo_2015_Quick.svg" alt="Quick">
+</div>
+
+<form id="search-form" action="https://www.google.com/search" method="GET">
+  <h2>You Selected:</h2>
+  <select id="search-engine">
+    <option value="https://www.google.com/search?q=">Google</option>
+    <option value="https://www.bing.com/search?q=">Bing</option>
+    <option value="https://in.search.yahoo.com/search?p=">Yahoo!</option>
+    <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
+    <option value="https://search.brave.com/search?q=">Brave</option>
+    <option value="https://www.youtube.com/results?search_query=">YouTube</option>
+    <option value="https://music.youtube.com/search?q=">YouTube Music</option>
+
+
+  </select>
+  <input type="text" name="q" placeholder="Search...">
+  <button type="submit">Search</button>
+</form>
+
+<script>
+  const form = document.getElementById('search-form');
+  const searchEngineSelect = document.getElementById('search-engine');
+  const queryInput = document.querySelector('input[name="q"]');
+
+  form.addEventListener('submit', function(event) {
+    const selectedEngine = searchEngineSelect.value;
+    form.action = selectedEngine + encodeURIComponent(queryInput.value);
+  });
+</script>
+
+<footer>
+<p>© 2024 Powered by Quick Search</p>
+</footer>
+</body>
+</html>
